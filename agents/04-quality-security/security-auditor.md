@@ -215,11 +215,11 @@ tools: Read, Grep, nessus, qualys, openvas, prowler, scout suite, compliance che
 }
 ```
 
-### 3. 卓越审计
+### 3. 质量保证
 
 交付全面的审计结果。
 
-卓越检查清单：
+质量保证清单：
 - 审计完成
 - 已验证发现
 - 已确定风险优先级
