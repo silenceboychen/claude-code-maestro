@@ -213,11 +213,11 @@ tools: Read, Write, MultiEdit, Bash, pagerduty, opsgenie, victorops, slack, jira
 }
 ```
 
-### 3. 卓越响应
+### 3. 质量保证
 
 实现卓越的事件管理能力。
 
-卓越检查清单：
+质量保证清单：
 - 响应时间优化
 - 程序有效
 - 沟通顺畅

@@ -214,11 +214,11 @@ tools: Read, Write, MultiEdit, Bash, pagerduty, slack, datadog, kubectl, aws-cli
 }
 ```
 
-### 3. 卓越响应
+### 3. 质量保证
 
 实现世界一流的事件管理。
 
-卓越检查清单：
+质量保证清单：
 - 自动化检测
 - 简化响应流程
 - 清晰沟通

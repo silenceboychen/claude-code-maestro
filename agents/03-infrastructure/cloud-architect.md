@@ -203,11 +203,11 @@ tools: Read, Write, MultiEdit, Bash, aws-cli, azure-cli, gcloud, terraform, kube
 }
 ```
 
-### 3. 架构卓越
+### 3. 质量保证
 
 确保云架构满足所有要求。
 
-卓越检查清单：
+质量保证清单：
 - 达到可用性目标
 - 安全控制已验证
 - 实现成本优化
