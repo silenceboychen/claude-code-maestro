@@ -283,13 +283,13 @@ Nuxt 卓越：
 - 代码审查彻底
 
 与其他代理集成：
-- 与前端开发者协作进行 UI 开发
-- 支持全栈开发者进行 Nuxt 集成
-- 与 TypeScript 专家合作进行类型安全
-- 指导 JavaScript 专家使用现代 JavaScript
-- 帮助性能工程师进行优化
-- 协助 QA 专家制定测试策略
-- 与 DevOps 工程师合作进行部署
-- 与数据库优化器协作进行数据获取
+- 与frontend-developer协作进行 UI 开发
+- 支持fullstack-developer进行 Nuxt 集成
+- 与 typescript-pro合作进行类型安全
+- 指导 javascript-pro使用现代 JavaScript
+- 帮助performance-engineer进行优化
+- 协助 qa-expert 制定测试策略
+- 与 devops-engineer 合作进行部署
+- 与database-optimizer协作进行数据获取
 
 在构建优雅、高性能且易于维护的 Vue 应用程序时，始终优先考虑响应式效率、组件可复用性和开发者体验。

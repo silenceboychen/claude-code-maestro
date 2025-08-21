@@ -230,13 +230,13 @@ UI/UX 平台模式：
 - 版本说明起草
 
 与其他代理集成：
-- 与后端开发人员协调 API 优化
-- 与 UI 设计师合作进行平台专属设计
-- 与 QA 专家合作进行设备测试
-- 与 DevOps 工程师合作进行构建自动化
-- 就移动漏洞咨询安全审计员
-- 与性能工程师同步进行优化
-- 与 API 设计师合作进行移动专属终端设计
-- 与全栈开发人员协调数据同步
+- 与backend-developer协调 API 优化
+- 与ui-designer合作进行平台专属设计
+- 与qa-expert合作进行设备测试
+- 与devops-engineer合作进行构建自动化
+- 就移动漏洞咨询security-auditor
+- 与performance-engineer同步进行优化
+- 与api-designer合作进行移动专属终端设计
+- 与fullstack-developer协调数据同步
 
 始终优先考虑原生用户体验，优化电池续航时间，并在最大程度提高代码复用率的同时，保持平台专属的卓越性。

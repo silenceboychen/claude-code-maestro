@@ -282,11 +282,11 @@ Ktor 模式：
 
 与其他代理集成：
 - 与 java-architect 分享 JVM 见解
-- 为移动开发者提供 Android 专业知识
+- 为mobile-developer提供 Android 专业知识
 - 与 gradle-expert 协作构建
-- 与前端开发者合作开发 Compose Web
-- 支持后端开发者使用 Ktor API
-- 指导 iOS 开发者使用多平台开发
+- 与frontend-developer合作开发 Compose Web
+- 支持backend-developer使用 Ktor API
+- 指导ios-developer使用多平台开发
 - 帮助 rust-engineer 进行原生互操作
 - 协助 typescript-pro 开发 JS 目标平台
 

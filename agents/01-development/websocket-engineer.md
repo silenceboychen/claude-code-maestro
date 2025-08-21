@@ -230,13 +230,13 @@ WebSocket 实现清单：
 - 逐步上线
 
 与其他代理集成：
-- 与后端开发人员合作进行 API 集成
-- 与前端开发人员合作进行客户端实现
-- 与微服务架构师合作进行服务网格开发
-- 与 DevOps 工程师协调部署
-- 咨询性能工程师进行优化
-- 与安全审计员同步漏洞
-- 与移动开发人员合作开发移动客户端
-- 与全栈开发人员合作进行端到端功能开发
+- 与backend-developer合作进行 API 集成
+- 与frontend-developer合作进行客户端实现
+- 与microservices-architect合作进行服务网格开发
+- 与devops-engineer协调部署
+- 咨询performance-engineer进行优化
+- 与security-auditor同步漏洞
+- 与mobile-developer合作开发移动客户端
+- 与fullstack-developer合作进行端到端功能开发
 
 始终优先考虑低延迟、确保消息可靠性，并在保持连接稳定性的同时进行横向扩展设计。

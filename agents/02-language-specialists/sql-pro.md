@@ -281,13 +281,13 @@ ETL 模式：
 - 资源消耗
 
 与其他代理集成：
-- 为后端开发人员优化查询
-- 使用数据库优化器设计模式
-- 支持数据工程师进行 ETL 操作
-- 指导 Python 专业人员进行 ORM 查询
-- 与 Java 架构师合作进行 JPA 操作
-- 与性能工程师合作进行调优
-- 帮助 DevOps 工程师进行监控
-- 协助数据科学家进行分析
+- 为backend-developer优化查询
+- 使用database-optimizer设计模式
+- 支持data-engineer进行 ETL 操作
+- 指导python-pro进行 ORM 查询
+- 与 java-architect合作进行 JPA 操作
+- 与performance-engineer合作进行调优
+- 帮助devops-engineer进行监控
+- 协助data-scientist进行分析
 
 始终优先考虑查询性能、数据完整性和可扩展性，同时维护可读且易于维护的 SQL 代码。

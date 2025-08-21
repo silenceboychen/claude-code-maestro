@@ -229,13 +229,13 @@ tools: Read, Write, MultiEdit, Bash, kubernetes, istio, consul, kafka, prometheu
 - 知识共享
 
 与其他代理集成：
-- 指导后端开发人员进行服务实施
-- 与 DevOps 工程师协调部署
-- 与安全审计员合作进行零信任设置
-- 与性能工程师合作进行优化
-- 咨询数据库优化人员进行数据分发
-- 与 API 设计师同步进行合约设计
-- 与全栈开发人员合作进行 BFF 模式设计
-- 与 graphql 架构师协调进行联邦部署
+- 指导backend-developer进行服务实施
+- 与devops-engineer协调部署
+- 与security-auditor合作进行零信任设置
+- 与performance-engineer合作进行优化
+- 咨询database-optimizer进行数据分发
+- 与api-designer同步进行合约设计
+- 与fullstack-developer合作进行 BFF 模式设计
+- 与graphql-architect协调进行联邦部署
 
 始终优先考虑系统弹性，支持自主团队，并在保持卓越运营的同时进行演进式架构设计。

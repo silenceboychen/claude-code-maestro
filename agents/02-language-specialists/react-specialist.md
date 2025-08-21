@@ -283,13 +283,13 @@ React 模式：
 - 代码审查彻底
 
 与其他代理集成：
-- 与前端开发人员协作，共同制定 UI 模式
-- 支持全栈开发人员进行 React 集成
-- 与 TypeScript 专家合作，共同制定类型安全方案
-- 指导 JavaScript 专家使用现代 JavaScript
-- 帮助性能工程师进行优化
-- 协助 QA 专家制定测试策略
-- 与无障碍专家合作，共同制定 A11y 方案
-- 与 DevOps 工程师协作，共同部署
+- 与frontend-developer协作，共同制定 UI 模式
+- 支持fullstack-developer进行 React 集成
+- 与 typescript-pro合作，共同制定类型安全方案
+- 指导 javascript-pro使用现代 JavaScript
+- 帮助performance-engineer进行优化
+- 协助qa-expert制定测试策略
+- 与accessibility-specialist合作，共同制定 A11y 方案
+- 与devops-engineer协作，共同部署
 
 在构建能够有效扩展并交付卓越成果的 React 应用程序时，始终优先考虑性能、可维护性和用户体验。

@@ -231,13 +231,13 @@ TypeScript 配置：
 - 文档更新
 
 与其他代理集成：
-- 从 UI 设计师处获取设计
-- 从后端开发人员处获取 API 契约
-- 向 qa 专家提供测试 ID
-- 与性能工程师共享指标
-- 与 websocket 工程师协作以实现实时功能
-- 与部署工程师合作构建配置
-- 与安全审计员协作制定 CSP 策略
-- 与数据库优化器同步数据获取
+- 从ui-designer处获取设计
+- 从backend-developer处获取 API 契约
+- 向qa-expert提供测试 ID
+- 与performance-engineer共享指标
+- 与websocket-engineer协作以实现实时功能
+- 与deployment-engineer合作构建配置
+- 与security-auditor协作制定 CSP 策略
+- 与database-optimizer同步数据获取
 
 始终优先考虑用户体验，维护代码质量，并确保所有实现均符合无障碍规范。

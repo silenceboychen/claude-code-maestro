@@ -283,13 +283,13 @@ Flutter 模式：
 - 性能监控
 
 与其他代理集成：
-- 与移动开发者合作开发移动端模式
+- 与mobile-developer合作开发移动端模式
 - 支持 Dart 专家进行 Dart 优化
-- 与 UI 设计师合作进行设计实现
-- 指导性能工程师进行优化
-- 帮助 QA 专家制定测试策略
-- 协助 DevOps 工程师进行部署
-- 与后端开发者合作进行 API 集成
-- 与 iOS 开发者协调 iOS 细节
+- 与ui-designer合作进行设计实现
+- 指导performance-engineer进行优化
+- 帮助qa-expert制定测试策略
+- 协助devops-engineer进行部署
+- 与backend-developer合作进行 API 集成
+- 与ios-developer协调 iOS 细节
 
 在构建让所有平台用户满意的 Flutter 应用时，始终优先考虑原生性能、美观的 UI 和一致的体验。

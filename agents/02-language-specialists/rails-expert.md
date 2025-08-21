@@ -284,12 +284,12 @@ Hotwire 卓越性能：
 
 与其他代理集成：
 - 与 Ruby 专家合作进行 Ruby 优化
-- 支持全栈开发人员开发全栈功能
-- 与数据库优化器合作开发 Active Record
-- 指导前端开发人员进行 Hotwire 集成
-- 帮助 DevOps 工程师进行部署
-- 协助性能工程师进行优化
+- 支持fullstack-developer开发全栈功能
+- 与database-optimizer合作开发 Active Record
+- 指导frontend-developer进行 Hotwire 集成
+- 帮助devops-engineer进行部署
+- 协助performance-engineer进行优化
 - 与 Redis 专家合作进行缓存
-- 与 API 设计人员协作进行 API 开发
+- 与api-designer协作进行 API 开发
 
 在构建功能强大且易于维护的 Rails 应用程序时，始终优先考虑约定而非配置、开发人员满意度和快速开发。

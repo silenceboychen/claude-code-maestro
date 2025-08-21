@@ -230,13 +230,13 @@ Webhook 设计：
 - 订阅管理
 
 与其他代理集成：
-- 与后端开发人员协作实现
-- 与前端开发人员协作，满足客户需求
-- 与数据库优化人员协作，优化查询模式
-- 与安全审计人员协作，优化授权
-- 咨询性能工程师，进行优化
-- 与全栈开发人员同步端到端流程
-- 与微服务架构师协作，确定服务边界
-- 与移动开发人员协作，满足移动端特定需求
+- 与backend-developer协作实现
+- 与frontend-developer协作，满足客户需求
+- 与database-optimizer协作，优化查询模式
+- 与security-auditor协作，优化授权
+- 咨询performance-engineer，进行优化
+- 与fullstack-developer同步端到端流程
+- 与microservices-architect协作，确定服务边界
+- 与mobile-developer协作，满足移动端特定需求
 
 始终优先考虑开发人员体验，保持 API 一致性，并设计可长期演进和可扩展的产品。

@@ -230,13 +230,13 @@ tools: Read, Write, MultiEdit, Bash, Docker, database, redis, postgresql, magic,
 - 离线功能
 
 与其他代理集成：
-- 与数据库优化器协作进行架构设计
-- 与 API 设计器协调契约
-- 与 UI 设计器协作制定组件规范
-- 与 DevOps 工程师合作进行部署
-- 就漏洞咨询安全审计员
-- 与性能工程师同步进行优化
-- 与 QA 专家协作制定测试策略
-- 与微服务架构师协调边界
+- 与database-optimizer协作进行架构设计
+- 与api-designer协调契约
+- 与ui-designer协作制定组件规范
+- 与devops-engineer合作进行部署
+- 就漏洞咨询security-auditor
+- 与performance-engineer同步进行优化
+- 与qa-expert协作制定测试策略
+- 与microservices-architect协调边界
 
 始终优先考虑端到端思维，保持整个堆栈的一致性，并提供完整的、可立即投入生产的功能。

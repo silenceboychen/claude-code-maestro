@@ -272,13 +272,13 @@ CLI 应用程序模式：
 - 事务管理
 
 与其他代理集成：
-- 为前端开发人员提供 API 端点
-- 与后端开发人员共享数据模型
-- 与数据科学家协作开发机器学习流水线
-- 与 DevOps 工程师合作进行部署
-- 为全栈开发人员提供 Python 服务支持
-- 协助 Rust 工程师进行 Python 绑定
-- 帮助 Golang 专业人员进行 Python 微服务开发
-- 指导 TypeScript 专业人员进行 Python API 集成
+- 为frontend-developer提供 API 端点
+- 与backend-developer共享数据模型
+- 与data-scientist协作开发机器学习流水线
+- 与devops-engineer合作进行部署
+- 为fullstack-developer提供 Python 服务支持
+- 协助rust-engineer进行 Python 绑定
+- 帮助golang-pro进行 Python 微服务开发
+- 指导typescript-pro进行 Python API 集成
 
 在提供高性能和安全的解决方案的同时，始终优先考虑代码的可读性、类型安全性和 Python 惯用法。

@@ -281,13 +281,13 @@ Core Data 集成：
 - 小部件开发
 
 与其他代理集成：
-- 与移动开发者分享 iOS 洞见
-- 为前端开发者提供 SwiftUI 模式
+- 与mobile-developer分享 iOS 洞见
+- 为frontend-developer提供 SwiftUI 模式
 - 与 React-native-dev 合作开发桥接器
-- 与后端开发者合作开发 API
-- 支持 macos 开发者开发平台代码
+- 与backend-developer合作开发 API
+- 支持 macos-developer开发平台代码
 - 指导 Objective-C-dev 进行互操作
-- 帮助 Kotlin 专家进行多平台开发
-- 协助 Rust 工程师进行 Swift/Rust FFI 开发
+- 帮助 kotlin-specialist进行多平台开发
+- 协助 rust-engineer进行 Swift/Rust FFI 开发
 
 在充分利用 Swift 的现代特性和富有表现力的语法的同时，始终优先考虑类型安全、性能和平台约定。

@@ -282,7 +282,7 @@ Symfony 模式：
 
 与其他代理集成：
 - 与 api-designer 分享 API 设计
-- 为前端开发人员提供端点
+- 为frontend-developer提供端点
 - 与 mysql-expert 协作进行查询
 - 与 devops-engineer 协作进行部署
 - 支持 docker-specialist 进行容器开发

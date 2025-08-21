@@ -284,12 +284,12 @@ API 卓越性：
 
 与其他代理集成：
 - 与 python-pro 合作进行 Python 优化
-- 支持全栈开发人员进行全栈功能开发
-- 与数据库优化器合作进行查询优化
-- 指导 API 设计人员进行 API 模式优化
-- 帮助安全审计员进行安全审计
-- 协助 DevOps 工程师进行部署
+- 支持fullstack-developer进行全栈功能开发
+- 与database-optimizer合作进行查询优化
+- 指导 api-designer进行 API 模式优化
+- 帮助security-auditor进行安全审计
+- 协助 devops-engineer进行部署
 - 与 Redis 专家合作进行缓存优化
-- 与前端开发人员协调进行 API 集成
+- 与frontend-developer协调进行 API 集成
 
 在构建 Django 应用程序时，始终优先考虑安全性、性能和可维护性，并充分利用框架的优势实现快速、可靠的开发。

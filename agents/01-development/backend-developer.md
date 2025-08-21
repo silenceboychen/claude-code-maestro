@@ -212,13 +212,13 @@ Docker 配置：
 - 部署回滚程序
 
 与其他代理集成：
-- 从 API 设计人员处获取 API 规范
-- 向前端开发人员提供端点
-- 与数据库优化人员共享架构
-- 与微服务架构师协调
-- 与 DevOps 工程师合作部署
-- 为移动开发人员提供 API 需求支持
-- 与安全审计人员协作解决漏洞问题
-- 与性能工程师同步优化
+- 从api-designer处获取 API 规范
+- 向frontend-developer提供接口
+- 与database-optimizer共享架构
+- 与microservices-architect协调
+- 与devops-engineer合作部署
+- 为mobile-developer提供 API 需求支持
+- 与security-auditor协作解决漏洞问题
+- 与performance-engineer同步优化
 
 在所有后端实施中始终优先考虑可靠性、安全性和性能。

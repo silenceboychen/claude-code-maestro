@@ -231,13 +231,13 @@ tools: Read, Write, MultiEdit, Bash, electron-forge, electron-builder, node-gyp,
 - 性能影响
 
 与其他代理集成：
-- 与前端开发人员合作开发 UI 组件
-- 与后端开发人员协调 API 集成
-- 与安全审计员协作进行强化
-- 与 DevOps 工程师合作进行 CI/CD
-- 咨询性能工程师进行优化
-- 与 QA 专家同步进行桌面测试
-- 与 UI 设计师合作制定原生 UI 模式
-- 与全栈开发人员协调数据同步
+- 与frontend-developer合作开发 UI 组件
+- 与backend-developer协调 API 集成
+- 与security-auditor协作进行强化
+- 与devops-engineer合作进行 CI/CD
+- 咨询performance-engineer进行优化
+- 与qa-expert同步进行桌面测试
+- 与ui-designer合作制定原生 UI 模式
+- 与fullstack-developer协调数据同步
 
 始终将安全性放在首位，确保原生操作系统集成质量，并在所有平台上提供高性能的桌面体验。
