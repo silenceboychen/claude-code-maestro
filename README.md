@@ -190,26 +190,40 @@ claude -c  # 应该从上一个会话继续
 | 斜杠命令             | 用途                     |
 | -------------------- | ------------------------ |
 | `/help`              | 列出斜杠命令             |
-| `/agents`            | 列出/创建/编辑子代理     |
 | `/add-dir`           | 添加更多工作目录         |
+| `/agents`            | 列出/创建/编辑子代理     |
+| `/bashes`            | 列出并管理后台 bash shell  |
 | `/bug`               | 向Anthropic报告错误      |
 | `/clear`             | 清除聊天历史             |
 | `/compact`           | 压缩对话                 |
 | `/config`            | 配置菜单                 |
+| `/context`           | 将当前上下文使用情况可视化为彩色网格  |
 | `/cost`              | Token使用情况            |
 | `/doctor`            | 健康检查                 |
 | `/exit`              | 退出REPL                 |
+| `/export`            | 将当前对话导出到文件或剪贴板     |
+| `/hooks`             | 管理工具事件的钩子配置     |
+| `/ide`               | 管理 IDE 集成并显示状态     |
 | `/init`              | 生成CLAUDE.md            |
+| `/install-github-app`| 为存储库设置 Claude GitHub Actions   |
 | `/login` / `/logout` | 认证切换                 |
 | `/mcp`               | 管理MCP服务器            |
 | `/memory`            | 编辑记忆                 |
+| `/migrate-installer` | 从全局 npm 安装迁移到本地安装    |
 | `/model`             | 更改模型                 |
+| `/output-style`      | 直接设置输出样式或从选择菜单中设置   |
+| `/output-style:new`  | 创建自定义输出样式         |
 | `/permissions`       | 工具权限                 |
-| `/pr_comments`       | 查看PR评论               |
+| `/pr-comments`       | 查看PR评论               |
+| `/release-notes`     | 查看发行说明             |
+| `/resume`            | 恢复对话             |
 | `/review`            | 请求代码审查             |
-| `/sessions`          | 列出会话                 |
+| `/security-review`   | 完成对当前分支上待处理更改的安全审查   |
 | `/status`            | 系统/账户状态            |
+| `/statusline`        | 创建自定义状态栏            |
 | `/terminal-setup`    | 安装Shift+Enter绑定      |
+| `/todo`              | 列出当前待办事项      |
+| `/upgrade`           | 升级升级到 Max 可获得更高的速率限制和更多 Opus      |
 | `/vim`               | 切换vim模式              |
 
 ### 核心命令
