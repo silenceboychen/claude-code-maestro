@@ -16,7 +16,10 @@
    - 要执行的命令
 
 4. 按照精确的 JSON 结构生成完整的钩子配置
-5. 将其保存到 `~/.claude/hooks.json`（如果存在，则与现有钩子合并）
+5. 将其保存到以下设置文件之一（如果存在，则与现有钩子合并，优先考虑项目设置）：
+   - `~/.claude/settings.json` - 用户设置
+   - `.claude/settings.json` - 项目设置
+   - `.claude/settings.local.json` - 本地项目设置（不提交）
 6. 提供配置内容的摘要
 
 ## 钩子事件
