@@ -302,6 +302,79 @@ claude -c  # 应该从上一个会话继续
 
 ---
 
+## Hooks钩子
+
+Hooks（钩子）是Claude Code中的强大功能，允许你在特定工具调用事件发生时执行自定义shell命令。
+
+### 配置文件位置说明
+
+| 配置文件路径 | 作用范围 | 描述 | 版本控制 |
+|-------------|----------|------|----------|
+| `~/.claude/settings.json` | 用户级全局 | 影响所有Claude Code会话的全局设置 | 不提交 |
+| `.claude/settings.json` | 项目级 | 仅影响当前项目，团队共享配置 | 可提交 |
+| `.claude/settings.local.json` | 本地项目级 | 个人化项目配置，覆盖项目设置 | 不提交 |
+
+### Hook事件说明
+
+| 事件类型 | 触发时机 | 用途 | 示例场景 |
+|----------|----------|------|----------|
+| `PreToolUse` | 工具执行前 | 预处理、权限检查、阻止工具使用 | 执行前备份、权限验证 |
+| `PostToolUse` | 工具成功执行后 | 后续处理、验证、记录结果 | 自动提交代码、运行测试 |
+| `Notification` | Claude发送通知时 | 处理权限请求、空闲提醒 | 自动授权、提醒通知 |
+| `UserPromptSubmit` | 用户提交提示时 | 添加上下文、验证输入、阻止特定提示 | 添加项目信息、输入过滤 |
+| `Stop` | Claude响应完成时 | 主要响应完成处理 | 保存响应日志 |
+| `SubagentStop` | 子代理响应完成时 | 子代理任务完成处理 | 子任务结果统计 |
+| `SessionEnd` | 会话结束时 | 清理、记录会话统计 | 资源清理、会话统计 |
+| `PreCompact` | 执行压缩操作前 | 压缩前准备工作 | 备份对话历史 |
+| `SessionStart` | 会话开始时 | 初始化、加载开发上下文 | 环境准备、上下文加载 |
+
+### 匹配器说明
+
+匹配器用于确定hook何时触发，支持以下模式：
+
+| 匹配器类型 | 语法 | 示例 | 说明 |
+|-----------|------|------|------|
+| 精确匹配 | `"ToolName"` | `"Write"` | 仅匹配指定工具 |
+| 正则表达式 | `"Tool1\|Tool2"` | `"Edit\|Write"` | 匹配多个工具 |
+| 通配符 | `"*"` | `"*"` | 匹配所有工具 |
+
+**PreToolUse/PostToolUse支持的工具匹配器：**
+- `Task` - 子代理任务
+- `Bash` - Shell命令执行  
+- `Glob`、`Grep` - 搜索操作
+- `Read`、`Write`、`Edit` - 文件操作
+- `WebFetch` - 网络获取
+
+**PreCompact匹配器：**
+- `manual` - 通过/compact命令手动触发
+- `auto` - 由于上下文窗口限制自动触发
+
+**SessionStart匹配器：**
+- `startup` - 新会话启动
+- `resume` - 恢复现有会话
+- `clear` - 清除后重新开始
+
+**SessionEnd触发原因：**
+- `clear` - 用户清除会话
+- `logout` - 用户登出
+- `prompt_input_exit` - 提示输入退出
+- `other` - 其他原因
+
+### 配置管理
+
+```bash
+# 打开hooks配置界面
+/hooks
+
+# 查看当前hook配置  
+claude config get hooks
+
+# 清除特定hook
+claude config remove hooks.preToolUse
+```
+
+---
+
 ## 子代理
 
 > agents/目录下提供了多种不同类别的Sub Agents的最佳实践，可直接点击[**子代理最佳实践**](agents/README.md)查看。
