@@ -114,7 +114,7 @@ claude /agents             # 配置/设置用于不同任务的子代理
 npm install -g @anthropic-ai/claude-code
 ```
 
-#### 方法2：原生安装
+#### 方法2：原生安装（推荐，npm安装有时无法自动升级）
 
 ```bash
 # macOS、Linux、WSL：
