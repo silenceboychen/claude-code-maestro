@@ -15,13 +15,15 @@
 1. [快速开始](#快速开始)
 2. [安装与设置](#安装与设置)
 3. [命令介绍](#命令介绍)
-4. [子代理（Sub Agents）](#子代理)
-5. [MCP集成](#mcp集成)
-6. [安全性与权限](#安全性与权限)
-7. [思考关键词](#思考关键词)
-8. [故障排除](#故障排除)
-9. [高级功能](#高级功能)
-10. [最佳实践](#最佳实践)
+4. [Hooks钩子](#Hooks钩子)
+5. [斜杠命令](#斜杠命令)
+6. [子代理（Sub Agents）](#子代理)
+7. [内存管理](#内存管理)
+8. [MCP集成](#mcp集成)
+9. [深度思考模式](#深度思考模式)
+10. [安全性与权限](#安全性与权限)
+11. [最佳实践](#最佳实践)
+12. [故障排除](#故障排除)
 
 ---
 
@@ -185,47 +187,6 @@ claude -c  # 应该从上一个会话继续
 
 ## 命令介绍
 
-### 内置斜杠命令（交互式）
-
-| 斜杠命令             | 用途                     |
-| -------------------- | ------------------------ |
-| `/help`              | 列出斜杠命令             |
-| `/add-dir`           | 添加更多工作目录         |
-| `/agents`            | 列出/创建/编辑子代理     |
-| `/bashes`            | 列出并管理后台 bash shell  |
-| `/bug`               | 向Anthropic报告错误      |
-| `/clear`             | 清除聊天历史             |
-| `/compact`           | 压缩对话                 |
-| `/config`            | 配置菜单                 |
-| `/context`           | 将当前上下文使用情况可视化为彩色网格  |
-| `/cost`              | Token使用情况            |
-| `/doctor`            | 健康检查                 |
-| `/exit`              | 退出REPL                 |
-| `/export`            | 将当前对话导出到文件或剪贴板     |
-| `/hooks`             | 管理工具事件的钩子配置     |
-| `/ide`               | 管理 IDE 集成并显示状态     |
-| `/init`              | 生成CLAUDE.md            |
-| `/install-github-app`| 为存储库设置 Claude GitHub Actions   |
-| `/login` / `/logout` | 认证切换                 |
-| `/mcp`               | 管理MCP服务器            |
-| `/memory`            | 编辑记忆                 |
-| `/migrate-installer` | 从全局 npm 安装迁移到本地安装    |
-| `/model`             | 更改模型                 |
-| `/output-style`      | 直接设置输出样式或从选择菜单中设置   |
-| `/output-style:new`  | 创建自定义输出样式         |
-| `/permissions`       | 工具权限                 |
-| `/pr-comments`       | 查看PR评论               |
-| `/release-notes`     | 查看发行说明             |
-| `/resume`            | 恢复对话             |
-| `/review`            | 请求代码审查             |
-| `/security-review`   | 完成对当前分支上待处理更改的安全审查   |
-| `/status`            | 系统/账户状态            |
-| `/statusline`        | 创建自定义状态栏            |
-| `/terminal-setup`    | 安装Shift+Enter绑定      |
-| `/todo`              | 列出当前待办事项      |
-| `/upgrade`           | 升级升级到 Max 可获得更高的速率限制和更多 Opus      |
-| `/vim`               | 切换vim模式              |
-
 ### 核心命令
 
 | 命令                                | 描述                   | 示例                                   |
@@ -258,6 +219,37 @@ claude -c  # 应该从上一个会话继续
 | `claude config set <key> <val>`   | 设置值      | `claude config set theme dark` |
 | `claude config add <key> <vals…>` | 追加到数组  | `claude config add env DEV=1` |
 | `claude config remove <key> <vals…>` | 移除项目 | `claude config remove env DEV=1` |
+
+### 键盘快捷键
+
+```bash
+# 基本控制
+Ctrl+C    # 取消当前输入或生成
+Ctrl+D    # 退出 Claude Code 会话
+Ctrl+L    # 清除终端屏幕
+Ctrl+R    # 反向搜索命令历史
+
+# 导航命令历史
+↑/↓ 方向键  # 浏览命令历史
+```
+
+### 多行输入
+
+```
+# 方法1：反斜杠换行（适用于所有终端）
+第一行内容 \
+继续第二行内容
+
+# 方法2：Option+Enter（macOS 默认）
+# 按 Option+Enter 换行
+
+# 方法3：Shift+Enter（需要先运行 /terminal-setup）
+# 按 Shift+Enter 换行
+```
+
+### 图片发送
+
+复制图片在claude code聊天窗口粘贴即可，但这里要注意，在Mac电脑下不能使用``Cmd+V``进行粘贴，而要使用``Ctrl+V``
 
 ### 参数定义
 
@@ -299,6 +291,8 @@ claude -c  # 应该从上一个会话继续
 | `--model <name>`      | 选择模型           | `--model claude-opus-4-20250514` |
 | `--verbose`           | 详细日志           | `--verbose`              |
 | `--mcp-config <file>` | 加载MCP服务器      | `--mcp-config servers.json` |
+
+
 
 ---
 
@@ -375,6 +369,142 @@ claude config remove hooks.preToolUse
 
 ---
 
+## 斜杠命令
+
+### 内置斜杠命令
+
+| 斜杠命令             | 用途                     |
+| -------------------- | ------------------------ |
+| `/help`              | 列出斜杠命令             |
+| `/add-dir`           | 添加更多工作目录         |
+| `/agents`            | 列出/创建/编辑子代理     |
+| `/bashes`            | 列出并管理后台 bash shell  |
+| `/bug`               | 向Anthropic报告错误      |
+| `/clear`             | 清除聊天历史             |
+| `/compact`           | 压缩对话                 |
+| `/config`            | 配置菜单                 |
+| `/context`           | 将当前上下文使用情况可视化为彩色网格  |
+| `/cost`              | Token使用情况            |
+| `/doctor`            | 健康检查                 |
+| `/exit`              | 退出REPL                 |
+| `/export`            | 将当前对话导出到文件或剪贴板     |
+| `/hooks`             | 管理工具事件的钩子配置     |
+| `/ide`               | 管理 IDE 集成并显示状态     |
+| `/init`              | 生成CLAUDE.md            |
+| `/install-github-app`| 为存储库设置 Claude GitHub Actions   |
+| `/login` / `/logout` | 认证切换                 |
+| `/mcp`               | 管理MCP服务器            |
+| `/memory`            | 编辑记忆                 |
+| `/migrate-installer` | 从全局 npm 安装迁移到本地安装    |
+| `/model`             | 更改模型                 |
+| `/output-style`      | 直接设置输出样式或从选择菜单中设置   |
+| `/output-style:new`  | 创建自定义输出样式         |
+| `/permissions`       | 工具权限                 |
+| `/pr-comments`       | 查看PR评论               |
+| `/release-notes`     | 查看发行说明             |
+| `/resume`            | 恢复对话             |
+| `/review`            | 请求代码审查             |
+| `/security-review`   | 完成对当前分支上待处理更改的安全审查   |
+| `/status`            | 系统/账户状态            |
+| `/statusline`        | 创建自定义状态栏            |
+| `/terminal-setup`    | 安装Shift+Enter绑定      |
+| `/todo`              | 列出当前待办事项      |
+| `/upgrade`           | 升级升级到 Max 可获得更高的速率限制和更多 Opus      |
+| `/vim`               | 切换vim模式              |
+
+### 自定义斜杠命令
+
+Claude Code 支持创建自定义斜杠命令，可以放置在：
+- 项目级别: ``.claude/commands/`` 目录
+- 用户级别: ``~/.claude/commands/`` 目录
+
+#### 自定义命令示例
+
+```shell
+# 创建项目级别的测试命令
+mkdir -p .claude/commands
+cat > .claude/commands/test.md << 'EOF'
+---
+description: "运行项目测试套件"
+allowed_tools: ["bash"]
+---
+
+请运行以下测试命令并报告结果：
+
+```bash
+npm test
+```
+
+如果测试失败，请分析失败原因并建议修复方案。
+EOF
+```
+
+#### 带参数的自定义命令
+
+```shell
+# 创建带参数的重构命令
+cat > .claude/commands/refactor.md << 'EOF'
+---
+description: "重构指定的代码文件"
+---
+
+请帮我重构以下文件：$ARGUMENTS
+
+重构要求：
+1. 改善代码可读性
+2. 遵循最佳实践
+3. 保持功能不变
+4. 添加适当的注释
+EOF
+```
+
+#### 命名空间命令
+
+```shell
+# 创建命名空间命令 /git/status
+mkdir -p .claude/commands/git
+cat > .claude/commands/git/status.md << 'EOF'
+---
+description: "检查Git状态并提供建议"
+---
+
+请执行以下操作：
+1. 检查当前 git 状态
+2. 显示未提交的更改
+3. 如果有更改，建议合适的提交信息
+EOF
+```
+
+### 命令使用示例
+
+```shell
+# 使用内置命令
+/help
+/clear
+/model claude-3-sonnet
+
+# 使用自定义命令
+/test
+/refactor src/utils/helper.js
+/git/status
+
+# 带多个参数的命令
+/refactor src/component1.js src/component2.js
+```
+
+### Frontmatter 选项
+
+```yaml
+---
+description: "命令描述"           # 命令说明
+allowed_tools: ["bash", "edit"]   # 允许使用的工具
+model: "claude-3-sonnet"          # 首选模型
+namespace: "git"                  # 命令命名空间
+---
+```
+
+---
+
 ## 子代理
 
 > agents/目录下提供了多种不同类别的Sub Agents的最佳实践，可直接点击[**子代理最佳实践**](agents/README.md)查看。
@@ -392,6 +522,40 @@ claude config remove hooks.preToolUse
 - 对于分析/审查任务，偏向**只读**代理。
 - 尽可能少地给予代理编辑权限。
 
+### 子代理有何特别之处？
+
+1. **独立上下文窗口**：
+每个子代理都在其独立的上下文空间内运行，从而防止不同任务之间的交叉污染，并保持主对话线程的清晰度。
+2. **领域特定智能**：
+子代理配备了根据其专业领域精心设计的指令，使其在特定任务上表现出色。
+3. **跨项目共享**：
+创建子代理后，您可以在各个项目中使用它，并将其分配给团队成员，以确保一致的开发实践。
+4. **精细的工具权限**：
+您可以为每个子代理配置特定的工具访问权限，从而能够精细地控制不同任务类型可用的功能。
+
+### 核心优势
+
+- **内存效率**：独立的上下文可防止主对话因特定任务的细节而变得杂乱无章
+- **增强的准确性**：专用的提示和配置可在特定领域带来更佳结果
+- **工作流程一致性**：团队范围内的子代理共享可确保以统一的方式处理常见任务
+- **安全控制**：可根据子代理类型和用途限制工具访问
+
+### 设计原则
+
+- 为每个代理定义一个明确的职责。
+- 保持该角色所需的最少工具集。
+- 对于分析/审查任务，偏向只读代理。
+- 尽可能少地给予代理编辑权限。
+
+### 子代理存储位置
+
+| 类型 | 路径 | 可用性 | 优先级 |
+|------|------|--------|--------|
+| 项目子代理 | `.claude/agents/` | 仅限当前项目 | 更高 |
+| 全局子代理 | `~/.claude/agents/` | 所有项目 | 更低 |
+
+注意：发生命名冲突时，项目特定的子代理将覆盖全局子代理。
+
 ### 如何配置代理
 
 保持代理**在项目中**，以便它们与仓库一起版本化，并通过PR演进。
@@ -400,44 +564,6 @@ claude config remove hooks.preToolUse
 # 打开代理面板，根据指示进行配置
 /agents
 ```
-
-### 创建你的核心代理
-- **planner**（只读）：将功能/问题转化为小的、可测试的任务；输出任务列表或plan.md。
-- **codegen**（具有编辑能力）：实现任务；限制在`src/` + `tests/`。
-- **tester**（只读或仅补丁）：编写*一个*失败的测试或最小重现。
-- **reviewer**（只读）：留下结构化审查评论；从不编辑。
-- **docs**（具有编辑能力）：仅更新`README.md`/`docs/`。
-
-> **策略提示：** 对于具有编辑能力的代理，偏向*补丁输出*，以便更改通过你的正常Git工作流程落地。
-
-
-### 示例提示
-保持提示简短、可测试且特定于仓库。将它们放入`agents/`目录：
-
-<img width="700" height="217" alt="image" src="https://github.com/user-attachments/assets/b4f92591-ff5c-4775-aec2-051f145b9616" />
-
-*说明：**test-coverage-analyzer**代理的示例提示。*
-
-**tester.prompt.md（示例）**
-```
-角色：为我描述的特定场景编写一个单一的、专注的失败测试。
-范围：仅在tests/下创建/修改测试。不要更改src/。
-输出：简要理由 + 统一差异或补丁。
-如果场景不清楚，问一个明确的澄清问题。
-```
-
-### 预期输出
-你的测试代理应该产生一个小的差异或补丁加上简短的理由：
-
-<img width="700" height="273" alt="image" src="https://github.com/user-attachments/assets/839151ce-02c9-4283-a53b-9dd105802ada" />
-
-*说明：来自**test-coverage-analyzer**代理的示例响应。*
-
-**验收清单**
-- [ ] 输出是单个变更集。
-- [ ] 只触及允许路径中的文件。
-- [ ] 理由解释意图和边缘情况。
-- [ ] 如果被阻止，代理询问了一个明确的问题。
 
 ### 为什么子代理很重要
 
@@ -465,6 +591,131 @@ claude config remove hooks.preToolUse
 - 要求进行单次测试时，接受多文件差异。
 
 ---
+
+## 内存管理
+
+### 内存类型
+
+Claude Code 提供三种内存位置，每种都有不同用途：
+
+| 记忆类型 | 文件位置 | 用途说明 | 使用示例 |
+|----------|----------|----------|----------|
+| 项目内存（共享） | ./CLAUDE.md | 项目团队共享的指令 | 项目架构、编码规范、常用工作流程 |
+| 用户内存（全局） | ~/.claude/CLAUDE.md | 用于所有项目的个人偏好设置 | 代码风格偏好、个人工具快捷方式 |
+| 项目内存（本地） | ./CLAUDE.local.md | 项目的个人偏好设置（已废弃） | 你的沙箱地址、测试数据偏好等 |
+
+其中， ``CLAUDE.md`` 文件是 Claude Code 自动读取的记忆文件，类似于 Cursor 中 ``rules`` 规则文件，但比它要更强大，它可以为 Claude 提供更多项目相关的上下文信息，如：
+- 常用的 bash 命令
+- 核心文件和工具函数
+- 代码风格指南
+- 测试说明
+- 代码库规范
+- 开发环境设置
+- 更多希望 Claude 记住的信息等等
+
+当 Claude Code 启动时，以上所有记忆文件会自动加载到运行环境中。
+
+可以在多个位置放置 ``CLAUDE.md`` 文件，Claude Code 会递归读取这些文件，从当前工作目录开始，向上递归到根目录，读取找到的任何 ``CLAUDE.md`` 文件。
+
+### 快速操作命令
+
+```
+/memory          # 编辑当前项目的 CLAUDE.md 文件
+/init            # 初始化 CLAUDE.md 文件模板
+#                # 快捷方式，等同于 /memory
+```
+
+### CLAUDE.md 文件示例
+
+```markdown
+# 项目特定配置
+
+## 项目概述
+这是一个 React + TypeScript 项目，使用 Vite 作为构建工具。
+
+## 编码规范
+- 使用函数式组件和 Hooks
+- 优先使用 TypeScript 严格模式
+- 遵循 ESLint 和 Prettier 配置
+
+## 常用命令
+- 开发服务器: `npm run dev`
+- 构建: `npm run build`  
+- 测试: `npm run test`
+- 类型检查: `npm run typecheck`
+- 代码检查: `npm run lint`
+
+## 项目结构
+- `src/components/` - React 组件
+- `src/hooks/` - 自定义 Hooks
+- `src/utils/` - 工具函数
+- `src/types/` - TypeScript 类型定义
+
+## 特殊要求
+- 所有 API 调用都通过 `src/services/` 目录
+- 使用 React Query 进行数据获取
+- 样式使用 Tailwind CSS
+
+## 导入其他文档
+@docs/api-guide.md
+@.github/CONTRIBUTING.md
+```
+
+### 最佳实践
+
+#### 内容结构
+
+```markdown
+# 推荐的 CLAUDE.md 结构
+
+## 项目信息
+- 项目描述、技术栈、架构概述
+
+## 开发规范  
+- 编码标准、命名约定、最佳实践
+
+## 环境和工具
+- 开发环境设置、必要的工具和命令
+
+## 项目结构
+- 目录结构说明、文件组织原则
+
+## 常见任务
+- 频繁执行的操作和对应命令
+
+## 特殊说明
+- 项目特有的注意事项和限制
+```
+
+#### 编写技巧
+
+- 具体明确: 避免模糊的描述，提供具体的指令
+- 结构化: 使用 Markdown 标题和列表组织内容
+- 定期更新: 随着项目演进及时更新内容
+- 团队协作: 项目级 CLAUDE.md 应该团队共同维护
+
+#### 实用示例
+
+```markdown
+# 测试相关配置
+当运行测试时，请使用以下命令：
+- 单元测试: `npm run test:unit`
+- 集成测试: `npm run test:integration`  
+- 测试覆盖率: `npm run test:coverage`
+
+测试文件应放在 `__tests__` 目录或与源文件同目录的 `.test.js` 文件中。
+
+# Git 工作流
+- 主分支: `main`
+- 开发分支: `develop`  
+- 功能分支: `feature/xxx`
+- 提交信息格式: `type(scope): description`
+
+# 部署信息
+- 开发环境: `npm run deploy:dev`
+- 生产环境: `npm run deploy:prod`
+- 环境变量配置在 `.env.example` 中
+```
 
 ## MCP集成
 
@@ -559,6 +810,48 @@ claude --allowedTools "Edit,View,mcp__git__*"
 ---
 
 
+
+## 深度思考模式
+
+Claude Code支持**扩展思考** — 为更难的问题提供额外的预回答规划时间。你可以使用特定的触发词来推动逐渐增加的"思考预算"。
+
+### 关键词
+
+按预算增加的顺序排列：`think` < `think hard` < `think harder` < `ultrathink`。
+
+> **仅**使用上述四个关键词。其他短语（例如，"think more"、"megathink"等）**未记录**，不应依赖。
+
+### 扩展思考的作用
+
+在Claude开始产生最终答案之前，它花费更多时间：
+- 规划解决方案，
+- 分解步骤，
+- 考虑替代方案和权衡，
+- 检查约束和边缘情况。
+
+### 如何使用
+
+你可以在提示中的任何地方放置关键词（不区分大小写）。如果出现多个，假设**最强的一个获胜**。
+
+```bash
+# 小幅提升
+claude -p "Think. Outline a plan to refactor the auth module."
+
+# 中等提升
+claude -p "Think harder. Draft a migration plan for moving from REST to gRPC."
+
+# 最大规划预算
+claude -p "Ultrathink. Propose a step‑by‑step strategy to fix flaky payments tests and add guardrails."
+```
+
+### 注意事项和注意点
+
+- 这是**Claude Code (CLI)行为**，不是公共API参数；命名或效果可能随时间演变。
+- 更高的预算通常增加**延迟**和**token使用**。偏向能完成工作的最小关键词。
+- 保持提示简洁。关键词要求Claude规划；你的提示应该仍然提供目标、约束和成功标准。
+
+---
+
 ## 安全性与权限
 
 ### 权限系统
@@ -629,168 +922,6 @@ claude config get disallowedTools
 
 # 审查配置
 claude config list
-```
-
----
-
-## 思考关键词
-
-Claude Code支持**扩展思考** — 为更难的问题提供额外的预回答规划时间。你可以使用特定的触发词来推动逐渐增加的"思考预算"。
-
-### 关键词
-
-按预算增加的顺序排列：`think` < `think hard` < `think harder` < `ultrathink`。
-
-> **仅**使用上述四个关键词。其他短语（例如，"think more"、"megathink"等）**未记录**，不应依赖。
-
-### 扩展思考的作用
-
-在Claude开始产生最终答案之前，它花费更多时间：
-- 规划解决方案，
-- 分解步骤，
-- 考虑替代方案和权衡，
-- 检查约束和边缘情况。
-
-### 如何使用
-
-你可以在提示中的任何地方放置关键词（不区分大小写）。如果出现多个，假设**最强的一个获胜**。
-
-```bash
-# 小幅提升
-claude -p "Think. Outline a plan to refactor the auth module."
-
-# 中等提升
-claude -p "Think harder. Draft a migration plan for moving from REST to gRPC."
-
-# 最大规划预算
-claude -p "Ultrathink. Propose a step‑by‑step strategy to fix flaky payments tests and add guardrails."
-```
-
-### 注意事项和注意点
-
-- 这是**Claude Code (CLI)行为**，不是公共API参数；命名或效果可能随时间演变。
-- 更高的预算通常增加**延迟**和**token使用**。偏向能完成工作的最小关键词。
-- 保持提示简洁。关键词要求Claude规划；你的提示应该仍然提供目标、约束和成功标准。
-
----
-
-## 故障排除
-
-### 诊断命令
-
-```bash
-# 基本健康检查
-claude --version             
-claude --help                   
-claude config list                 
-claude /doctor                  
-```
-
-### 常见问题与解决方案
-
-#### 1. 认证问题
-```bash
-# 检查API密钥
-echo $ANTHROPIC_API_KEY
-
-# 测试连接
-claude -p "test" --verbose
-
-# 重置认证 
-```
-
-#### 2. 安装问题  
-```bash
-# 重新安装
-npm uninstall -g @anthropic-ai/claude-code     
-npm install -g @anthropic-ai/claude-code      
-
-# 检查Node.js版本
-node --version  # 应该是18+
-```
-
-#### 3. 权限问题
-```bash
-# 检查当前权限
-claude config get allowedTools
-
-# 重置权限
-claude config set allowedTools "[]"
-claude config set allowedTools '["Edit", "View"]'
-```
-
-#### 4. MCP问题
-```bash
-# 调试MCP 
-claude --mcp-debug
-claude mcp list  
-```
-
-### 调试模式
-```bash
-# 启用详细日志
-claude --verbose
-
-# 检查日志（验证日志位置）
-```
-
----
-
-## 高级功能
-
-### 上下文管理
-
-#### CLAUDE.md - 项目记忆
-**用途**：存储Claude记住的持久项目信息
-
-**位置**：项目根目录
-
-**创建方式**
-- 手动创建CLAUDE.md文件
-- 通过斜杠命令``/init``创建（推荐）
-
-```markdown
-# 项目：我的应用程序
-
-## 概述
-这是一个使用PostgreSQL数据库的React/Node.js应用程序。
-
-## 架构
-- 前端：React 18 with TypeScript
-- 后端：Node.js with Express  
-- 数据库：PostgreSQL 14
-
-## 当前目标
-- [ ] 实现认证
-- [ ] 添加API文档
-- [ ] 设置CI/CD管道
-
-## 开发指南
-- 对所有新代码使用TypeScript
-- 遵循ESLint配置
-- 为新功能编写测试
-```
-
-#### 记忆命令 
-```bash
-claude /memory           # 编辑项目记忆
-claude /memory view      # 查看当前记忆
-```
-
-### 高级思考
-```bash
-# 这些"思考"短语可能有效：
-claude "think hard about the security implications of this code"
-claude "analyze this thoroughly and provide detailed recommendations"
-```
-
-### 多目录工作空间
-```bash
-# 添加多个目录
-claude --add-dir ../frontend ../backend ../shared
-
-# 项目级分析
-claude "analyze the entire application architecture"
 ```
 
 ---
@@ -928,4 +1059,66 @@ claude "为新的身份验证流程创建序列图"
 - 请求内容具体详细
 - 监控和分析日志
 - 在安全的环境中测试自动化
+---
+
+## 故障排除
+
+### 诊断命令
+
+```bash
+# 基本健康检查
+claude --version             
+claude --help                   
+claude config list                 
+claude /doctor                  
+```
+
+### 常见问题与解决方案
+
+#### 1. 认证问题
+```bash
+# 检查API密钥
+echo $ANTHROPIC_API_KEY
+
+# 测试连接
+claude -p "test" --verbose
+
+# 重置认证 
+```
+
+#### 2. 安装问题  
+```bash
+# 重新安装
+npm uninstall -g @anthropic-ai/claude-code     
+npm install -g @anthropic-ai/claude-code      
+
+# 检查Node.js版本
+node --version  # 应该是18+
+```
+
+#### 3. 权限问题
+```bash
+# 检查当前权限
+claude config get allowedTools
+
+# 重置权限
+claude config set allowedTools "[]"
+claude config set allowedTools '["Edit", "View"]'
+```
+
+#### 4. MCP问题
+```bash
+# 调试MCP 
+claude --mcp-debug
+claude mcp list  
+```
+
+### 调试模式
+```bash
+# 启用详细日志
+claude --verbose
+
+# 检查日志（验证日志位置）
+```
+
 ---
