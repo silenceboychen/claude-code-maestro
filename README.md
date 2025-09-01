@@ -371,6 +371,8 @@ claude config remove hooks.preToolUse
 
 ## 斜杠命令
 
+> commands/目录下提供了多种不同类别的Slash Command的最佳实践，可直接点击[**斜杠命令最佳实践**](commands/README.md)查看。
+
 ### 内置斜杠命令
 
 | 斜杠命令             | 用途                     |
